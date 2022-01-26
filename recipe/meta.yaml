@@ -19,7 +19,7 @@ requirements:
     - pip
     - python
   run:
-    - python
+    - python >=3.5
     - colorama >=0.3.4        # [win]
     - win32_setctime >=1.0.0  # [win]
     - aiocontextvars          # [py36]
