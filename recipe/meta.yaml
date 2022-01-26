@@ -25,6 +25,8 @@ requirements:
     - aiocontextvars          # [py36]
 
 test:
+  requires:
+    - pip
   imports:
     - loguru
   commands:
