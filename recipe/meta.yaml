@@ -18,6 +18,7 @@ requirements:
   host:
     - pip
     - python
+    - setuptools
   run:
     - python >=3.5
     - colorama >=0.3.4        # [win]
@@ -27,6 +28,8 @@ requirements:
 test:
   imports:
     - loguru
+  commands:
+    - pip check
 
 about:
   home: https://github.com/Delgan/loguru
