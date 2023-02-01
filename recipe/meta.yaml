@@ -38,8 +38,13 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Python logging made (stupidly) simple
+  description: |
+    This library is intended to make Python logging less painful by adding
+    a bunch of useful functionalities that solve caveats of the standard loggers.
+    Using logs in your application should be an automatism, Loguru tries to
+    make it both pleasant and powerful.
   dev_url: https://github.com/Delgan/loguru
-  doc_url: https://loguru.readthedocs.io/en/0.5.3/
+  doc_url: https://loguru.readthedocs.io/
 
 extra:
   recipe-maintainers:
