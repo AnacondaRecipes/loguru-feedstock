@@ -11,15 +11,17 @@ source:
 
 build:
   number: 4
-  script: '{{ PYTHON }} -m pip install . -vv '
+  script: {{ PYTHON }} -m pip install --no-deps . -vv
+  skip: True  # [py<35]
 
 requirements:
   host:
     - pip
     - python
     - setuptools
+    - wheel
   run:
-    - python >=3.5
+    - python
     - colorama >=0.3.4        # [win]
     - win32_setctime >=1.0.0  # [win]
     - aiocontextvars          # [py36]
