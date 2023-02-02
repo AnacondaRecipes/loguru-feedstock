@@ -10,16 +10,18 @@ source:
   sha256: b28e72ac7a98be3d28ad28570299a393dfcd32e5e3f6a353dec94675767b6319
 
 build:
-  number: 3
-  script: '{{ PYTHON }} -m pip install . -vv '
+  number: 4
+  script: {{ PYTHON }} -m pip install --no-deps . -vv
+  skip: True  # [py<35]
 
 requirements:
   host:
     - pip
     - python
     - setuptools
+    - wheel
   run:
-    - python >=3.5
+    - python
     - colorama >=0.3.4        # [win]
     - win32_setctime >=1.0.0  # [win]
     - aiocontextvars          # [py36]
@@ -38,8 +40,13 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Python logging made (stupidly) simple
+  description: |
+    This library is intended to make Python logging less painful by adding
+    a bunch of useful functionalities that solve caveats of the standard loggers.
+    Using logs in your application should be an automatism, Loguru tries to
+    make it both pleasant and powerful.
   dev_url: https://github.com/Delgan/loguru
-  doc_url: https://loguru.readthedocs.io/en/0.5.3/
+  doc_url: https://loguru.readthedocs.io/
 
 extra:
   recipe-maintainers:
