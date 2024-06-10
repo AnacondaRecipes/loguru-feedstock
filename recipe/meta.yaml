@@ -1,5 +1,5 @@
 {% set name = "loguru" %}
-{% set version = "0.5.3" %}
+{% set version = "0.7.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,32 +7,27 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: b28e72ac7a98be3d28ad28570299a393dfcd32e5e3f6a353dec94675767b6319
+  sha256: e671a53522515f34fd406340ee968cb9ecafbc4b36c679da03c18fd8d0bd51ac
 
 build:
-  number: 4
-  script: {{ PYTHON }} -m pip install --no-deps and --no-build-isolation . -vv
-  skip: True  # [py<35]
+  number: 1
+  script: '{{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv '
 
 requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
   host:
     - pip
     - python
-    - setuptools
-    - wheel
   run:
     - python
     - colorama >=0.3.4        # [win]
     - win32_setctime >=1.0.0  # [win]
-    - aiocontextvars          # [py36]
 
 test:
-  requires:
-    - pip
   imports:
     - loguru
-  commands:
-    - pip check
 
 about:
   home: https://github.com/Delgan/loguru
@@ -40,13 +35,7 @@ about:
   license_family: MIT
   license_file: LICENSE
   summary: Python logging made (stupidly) simple
-  description: |
-    This library is intended to make Python logging less painful by adding
-    a bunch of useful functionalities that solve caveats of the standard loggers.
-    Using logs in your application should be an automatism, Loguru tries to
-    make it both pleasant and powerful.
   dev_url: https://github.com/Delgan/loguru
-  doc_url: https://loguru.readthedocs.io/
 
 extra:
   anaconda-services:
