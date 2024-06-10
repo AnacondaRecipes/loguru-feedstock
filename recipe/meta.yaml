@@ -54,4 +54,5 @@ extra:
     reason: Dependency for pyautogen
   recipe-maintainers:
     - ianaobi
+    - bkreider
     - mariusvniekerk
