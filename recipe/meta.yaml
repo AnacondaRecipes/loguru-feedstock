@@ -11,7 +11,7 @@ source:
 
 build:
   number: 4
-  script: {{ PYTHON }} -m pip install --no-deps . -vv
+  script: {{ PYTHON }} -m pip install --no-deps and --no-build-isolation . -vv
   skip: True  # [py<35]
 
 requirements:
@@ -49,5 +49,9 @@ about:
   doc_url: https://loguru.readthedocs.io/
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/49522
+    reason: Dependency for pyautogen
   recipe-maintainers:
+    - ianaobi
     - mariusvniekerk
