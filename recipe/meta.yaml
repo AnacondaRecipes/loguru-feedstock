@@ -12,7 +12,7 @@ source:
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
-  skip: true  # [py<35]
+  # skip: true  # [py<35 or py>=40]
 
 requirements:
   host:
@@ -26,18 +26,22 @@ requirements:
     - aiocontextvars >=0.2.0  # [py<37]
 
 test:
+  files:
+    - test_loguru.py
   requires:
     - pip
+    - pytest
   imports:
     - loguru
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -ra -v --tb=short test_loguru.py
 
 about:
   home: https://github.com/Delgan/loguru
   license: MIT
   license_family: MIT
-  license_file: LICENSE
   summary: Python logging made (stupidly) simple
   description: |
     This library is intended to make Python logging less painful by adding
@@ -45,7 +49,7 @@ about:
     Using logs in your application should be an automatism, Loguru tries to
     make it both pleasant and powerful.
   dev_url: https://github.com/Delgan/loguru
-  doc_url: https://loguru.readthedocs.io/
+  doc_url: https://loguru.readthedocs.io
 
 extra:
   recipe-maintainers:
