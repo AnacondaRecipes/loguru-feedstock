@@ -42,6 +42,7 @@ about:
   home: https://github.com/Delgan/loguru
   license: MIT
   license_family: MIT
+  license_file: LICENSE.txt
   summary: Python logging made (stupidly) simple
   description: |
     This library is intended to make Python logging less painful by adding
