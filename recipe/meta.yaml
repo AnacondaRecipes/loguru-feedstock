@@ -1,13 +1,13 @@
 {% set name = "loguru" %}
-{% set version = "0.7.3" %}
+{% set version = "0.8.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 19480589e77d47b8d85b2c827ad95d49bf31b0dcde16593892eb51dd18706eb6
+  sha256: fb3e4623288e37700a0577f6e0ce776cc1860b5d95c657d67f07a2476b304867
 
 build:
   number: 0
@@ -18,7 +18,7 @@ requirements:
   host:
     - pip
     - python
-    - flit-core >=3,<4
+    - flit-core >=3,<5
   run:
     - python
     - colorama >=0.3.4  # [win]
@@ -36,7 +36,7 @@ test:
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
-    - pytest -ra -v --tb=short test_loguru.py
+    - pytest -vv test_loguru.py
 
 about:
   home: https://github.com/Delgan/loguru
@@ -50,7 +50,7 @@ about:
     Using logs in your application should be an automatism, Loguru tries to
     make it both pleasant and powerful.
   dev_url: https://github.com/Delgan/loguru
-  doc_url: https://loguru.readthedocs.io
+  doc_url: https://loguru.readthedocs.io/en/stable/index.html
 
 extra:
   recipe-maintainers:
